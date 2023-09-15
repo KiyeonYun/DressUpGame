@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class Chracter : MonoBehaviour
 {
-    public Transform hairGroup;
-    public Transform upperGroup;
-    public Transform bodyGroup;
-    public Button btnChangeHair;
+    Transform hairGroup;
+    Transform upperGroup;
+    Transform bodyGroup;
 
     List<GameObject> hairs = new List<GameObject>();
     List<GameObject> uppers = new List<GameObject>();
@@ -18,12 +17,20 @@ public class Chracter : MonoBehaviour
     int currentUpperNumber = 0;
     int currentBodyNumber = 0;
 
+    // Start() 보다 먼저 실행되는 Unity 내장함수
+    private void Awake()
+    {
+        hairGroup = transform.Find("hairGroup");
+        upperGroup = transform.Find("upBodyGroup");
+        bodyGroup = transform.Find("downBodyGroup");
+    }
 
     void Start()
     {
         MakeDresses(hairGroup, hairs);  // 콜백, 재귀함수
         MakeDresses(upperGroup, uppers);
         MakeDresses(bodyGroup, bodies);
+
         ShowDresses(hairs, 2);
         ShowDresses(uppers, 3);
         ShowDresses(bodies, 4);
@@ -49,7 +56,7 @@ public class Chracter : MonoBehaviour
     }
 
     // 버튼을 누르면 머리 모양이 변하는 함수
-    public void ChangeHair()
+    void ChangeHair()
     {
         if (currentHairNumber < hairs.Count - 1)
         {
@@ -62,7 +69,7 @@ public class Chracter : MonoBehaviour
         ShowDresses(hairs, currentHairNumber);
     }
 
-    public void ChangeUpper()
+    void ChangeUpper()
     {
         if (currentUpperNumber < uppers.Count - 1)
         {
@@ -75,7 +82,7 @@ public class Chracter : MonoBehaviour
         ShowDresses(uppers, currentUpperNumber);
     }
 
-    public void ChangeBody()
+    void ChangeBody()
     {
         if (currentBodyNumber < bodies.Count - 1)
         {

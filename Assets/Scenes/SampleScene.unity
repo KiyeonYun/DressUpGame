@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &45461424 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400134, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
-  m_PrefabInstance: {fileID: 1364634561}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &227046865 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400026, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
-  m_PrefabInstance: {fileID: 1364634561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277172438
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,11 +454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &707947390 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400130, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
-  m_PrefabInstance: {fileID: 1364634561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &799299614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,10 +1001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77fd1bf08c3fe7a429094b199d86d4ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hairGroup: {fileID: 227046865}
-  upperGroup: {fileID: 707947390}
-  bodyGroup: {fileID: 45461424}
-  btnChangeHair: {fileID: 1901995576}
 --- !u!1001 &1364634561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1271,6 +1252,10 @@ PrefabInstance:
     - target: {fileID: 100128, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
       propertyPath: m_Layer
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100130, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
+      propertyPath: m_Name
+      value: upBodyGroup
       objectReference: {fileID: 0}
     - target: {fileID: 100130, guid: c1282e72e7c8d4599969243e5754f9b7, type: 3}
       propertyPath: m_Layer
