@@ -17,12 +17,15 @@ public class Chracter : MonoBehaviour
     int currentUpperNumber = 0;
     int currentBodyNumber = 0;
 
+    Animator animator;
+
     // Start() 보다 먼저 실행되는 Unity 내장함수
     private void Awake()
     {
         hairGroup = transform.Find("hairGroup");
         upperGroup = transform.Find("upBodyGroup");
         bodyGroup = transform.Find("downBodyGroup");
+        animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -93,6 +96,17 @@ public class Chracter : MonoBehaviour
             currentBodyNumber = 0;
         }
         ShowDresses(bodies, currentBodyNumber);
+    }
+
+    public void ChangeAnimation()
+    {
+        int aniNumber = animator.GetInteger("aniNumber") + 1;
+        if (aniNumber > 3)
+        {
+            aniNumber = 0;
+        }
+        animator.SetInteger("aniNumber", aniNumber);
+        Debug.Log("aniNumber : " + aniNumber);
     }
 
     void Update()
