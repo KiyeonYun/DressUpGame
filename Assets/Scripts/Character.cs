@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Chracter : MonoBehaviour
 {
-    Transform hairGroup;
-    Transform upperGroup;
-    Transform bodyGroup;
+    public Transform hairGroup;
+    public Transform upperGroup;
+    public Transform bodyGroup;
 
     List<GameObject> hairs = new List<GameObject>();
     List<GameObject> uppers = new List<GameObject>();
@@ -34,6 +35,12 @@ public class Chracter : MonoBehaviour
         MakeDresses(upperGroup, uppers);
         MakeDresses(bodyGroup, bodies);
 
+        LoadSavedDresses();  // 저장된 데이터가 있는 경우
+        UpdateDresses();
+    }
+
+    void UpdateDresses()
+    {
         ShowDresses(hairs, 2);
         ShowDresses(uppers, 3);
         ShowDresses(bodies, 4);
@@ -109,8 +116,25 @@ public class Chracter : MonoBehaviour
         Debug.Log("aniNumber : " + aniNumber);
     }
 
-    void Update()
+    // 저장 기능
+    public void SaveCurrentDresses()
     {
+        PlayerPrefs.SetInt("hair", currentHairNumber);
+        PlayerPrefs.SetInt("upper", currentUpperNumber);
+        PlayerPrefs.SetInt("body", currentBodyNumber);
 
+        SceneManager.LoadScene("GirlAppear");
+        DontDestroyOnLoad(gameObject);
+    }
+
+    public void LoadSavedDresses()
+    {
+        currentHairNumber = PlayerPrefs.GetInt("hair");
+        currentUpperNumber = PlayerPrefs.GetInt("upper");
+        currentBodyNumber = PlayerPrefs.GetInt("body");
+
+        /*ShowDresses(hairs, currentHairNumber);
+        ShowDresses(uppers, currentUpperNumber);
+        ShowDresses(bodies, currentBodyNumber);*/
     }
 }
